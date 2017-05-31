@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<metainfo>
+  <schemaVersion>2.0</schemaVersion>
+  <services>
+    <service>
+      <name>GSTORE</name>
+      <displayName>gStore</displayName>
+      <comment>a graph based RDF triple store.</comment>
+      <version>0.4.1</version>
+      <components>
+        <component>
+          <name>gstore_server</name>
+          <displayName>gStore Server</displayName>
+          <category>MASTER</category>
+		  <cardinality>1</cardinality>
+          <commandScript>
+            <script>scripts/gstore.py</script>
+            <scriptType>PYTHON</scriptType>
+            <timeout>600</timeout>
+          </commandScript>
+        </component>
+     
+      </components>
+
+      <osSpecifics>
+        <osSpecific>
+          <osFamily>redhat5,redhat6,redhat7</osFamily>
+          <packages>
+            <package>
+              <name>gcc</name>
+            </package>
+			<package>
+              <name>gcc-c++</name>
+            </package>
+			<package>
+              <name>kernel-devel</name>
+            </package>
+			<package>
+              <name>readline-devel</name>
+            </package>
+			<package>
+              <name>boost</name>
+            </package>
+			<package>
+              <name>boost-devel</name>
+            </package>
+          </packages>
+        </osSpecific>
+      </osSpecifics>
+    </service>
+  </services>
+</metainfo>
