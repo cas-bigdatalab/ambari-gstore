@@ -28,12 +28,27 @@ class GStoreMaster(Script):
         env.set_params(params)
         self.configure(env)
         Execute(format("cd {gstore_dir}/latest;./bin/gserver -s;rm -rf /etc/gserver.pid;pidof ./bin/gserver | cut -d ' ' -f 1 >> /etc/gserver.pid"))
+        
+        Execute(format("cd {gstore_dir}/latest;nohup ./bin/ghttp &"))
+        Execute(format("rm -rf /etc/gserver_http.pid;pidof ./bin/ghttp | cut -d ' ' -f 1 >> /etc/gserver_http.pid"))
+        
+        
+        service_packagedir = params.service_packagedir
+        Execute('find '+params.service_packagedir+' -iname "*.sh" | xargs chmod +x')
+        cmd = format("nohup {service_packagedir}/scripts/metric_send.sh {collector_host} {current_host_name} &")
+        Execute('echo "Running ' + cmd + '" as root')
+        Execute(cmd, ignore_failures=True)
 
     def stop(self, env):
         import params
         env.set_params(params)
         self.configure(env)
         Execute(format("cd {gstore_dir}/latest;./bin/gserver -t"))
+        
+        cmd = format("ps -ef|grep ghttp |grep -v grep|cut -c 9-15|xargs kill -9 ")
+        Execute(cmd, ignore_failures=True)
+        cmd = format("ps -ef|grep metric_send.sh |grep -v grep|cut -c 9-15|xargs kill -9 ")
+        Execute(cmd, ignore_failures=True)
 
 
     def restart(self, env):

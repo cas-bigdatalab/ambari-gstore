@@ -1,0 +1,82 @@
+{
+  "GSTORE_SERVER": {
+    "Component": [
+      {
+        "type": "ganglia",
+        "metrics": {
+          "default": {
+            "metrics/triple": {
+              "metric": "triple",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/entity": {
+              "metric": "entity",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/literal": {
+              "metric": "literal",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/subject": {
+              "metric": "subject",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/predicate": {
+              "metric": "predicate",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/connection": {
+              "metric": "connection",
+              "pointInTime": true,
+              "temporal": true
+            }
+          }
+        }
+      }
+    ],
+    "HostComponent": [
+      {
+        "type": "ganglia",
+        "metrics": {
+          "default": {
+            "metrics/triple": {
+              "metric": "triple",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/entity": {
+              "metric": "entity",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/literal": {
+              "metric": "literal",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/subject": {
+              "metric": "subject",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/predicate": {
+              "metric": "predicate",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/connection": {
+              "metric": "connection",
+              "pointInTime": true,
+              "temporal": true
+            }
+          }
+        }
+      }
+    ]
+  }
+}

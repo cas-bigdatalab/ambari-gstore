@@ -1,0 +1,131 @@
+{
+  "layouts": [
+    {
+      "layout_name": "default_gstore_dashboard",
+      "display_name": "Standard gStore Dashboard",
+      "section_name": "GSTORE_SUMMARY",
+      "widgetLayoutInfo": [
+        {
+          "widget_name": "Triple NUM",
+          "description": "Triple NUM",
+          "widget_type": "NUMBER",
+          "is_visible": true,
+          "metrics": [
+            {
+              "name": "triple",
+              "metric_path": "metrics/triple",
+              "service_name": "GSTORE",
+              "component_name": "GSTORE_SERVER"
+            }
+          ],
+          "values": [
+            {
+              "name": "triple",
+              "value": "${triple}"
+            }
+          ]
+        },
+		 {
+          "widget_name": "Entity NUM",
+          "description": "Entity NUM",
+          "widget_type": "NUMBER",
+          "is_visible": true,
+          "metrics": [
+            {
+              "name": "entity",
+              "metric_path": "metrics/entity",
+              "service_name": "GSTORE",
+              "component_name": "GSTORE_SERVER"
+            }
+          ],
+          "values": [
+            {
+              "name": "entity",
+              "value": "${entity}"
+            }
+          ]
+        },
+		 {
+          "widget_name": "Literal NUM",
+          "description": "Literal NUM",
+          "widget_type": "NUMBER",
+          "is_visible": true,
+          "metrics": [
+            {
+              "name": "literal",
+              "metric_path": "metrics/literal",
+              "service_name": "GSTORE",
+              "component_name": "GSTORE_SERVER"
+            }
+          ],
+          "values": [
+            {
+              "name": "literal",
+              "value": "${literal}"
+            }
+          ]
+        },
+		 {
+          "widget_name": "Subject NUM",
+          "description": "Subject NUM",
+          "widget_type": "NUMBER",
+          "is_visible": true,
+          "metrics": [
+            {
+              "name": "subject",
+              "metric_path": "metrics/subject",
+              "service_name": "GSTORE",
+              "component_name": "GSTORE_SERVER"
+            }
+          ],
+          "values": [
+            {
+              "name": "subject",
+              "value": "${subject}"
+            }
+          ]
+        },
+		 {
+          "widget_name": "Predicate NUM",
+          "description": "Predicate NUM",
+          "widget_type": "NUMBER",
+          "is_visible": true,
+          "metrics": [
+            {
+              "name": "predicate",
+              "metric_path": "metrics/predicate",
+              "service_name": "GSTORE",
+              "component_name": "GSTORE_SERVER"
+            }
+          ],
+          "values": [
+            {
+              "name": "predicate",
+              "value": "${predicate}"
+            }
+          ]
+        },
+		 {
+          "widget_name": "Connection NUM",
+          "description": "Connection NUM",
+          "widget_type": "NUMBER",
+          "is_visible": true,
+          "metrics": [
+            {
+              "name": "connection",
+              "metric_path": "metrics/connection",
+              "service_name": "GSTORE",
+              "component_name": "GSTORE_SERVER"
+            }
+          ],
+          "values": [
+            {
+              "name": "connection",
+              "value": "${connection}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
