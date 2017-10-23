@@ -4,12 +4,12 @@
   "configuration": {
 
     "links": [
-      {
-        "name": "admin_ui",
-        "label": "ADMIN UI",
+	  {
+        "name": "gstore_ui",
+        "label": "GSTORE UI",
         "requires_user_name": "false",
         "component_name": "GSTORE_SERVER",
-        "url":"%@://%@:%@/admin.html",
+        "url":"%@://%@:%@/index.html",
         "port":{
           "http_property": "9000",
           "http_default_port": "9000",
@@ -24,7 +24,7 @@
         "label": "MONITOR UI",
         "requires_user_name": "false",
         "component_name": "GSTORE_SERVER",
-        "url":"%@://%@:%@/monitor",
+        "url":"%@://%@:%@/?operation=monitor",
         "port":{
           "http_property": "9000",
           "http_default_port": "9000",

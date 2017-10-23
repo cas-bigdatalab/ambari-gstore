@@ -58,7 +58,7 @@ BackupTime = 2000	# 4 am (GMT+8)
   </property>
 <property>
     <name>download.location</name>
-    <value>http://10.0.83.123/HDP/2.x/updates/2.5.3.0/gstore/gStore.tar.gz</value>
+    <value>http://10.0.83.123/HDP/2.x/updates/2.6.1.0/gstore/gStore.tar.gz</value>
     <description>Location to download gstore</description>
  </property> 
 <property>

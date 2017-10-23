@@ -27,11 +27,8 @@ class GStoreMaster(Script):
         import params
         env.set_params(params)
         self.configure(env)
-        Execute(format("cd {gstore_dir}/latest;./bin/gserver -s;rm -rf /etc/gserver.pid;pidof ./bin/gserver | cut -d ' ' -f 1 >> /etc/gserver.pid"))
-        
-        Execute(format("cd {gstore_dir}/latest;nohup ./bin/ghttp &"))
-        Execute(format("rm -rf /etc/gserver_http.pid;pidof ./bin/ghttp | cut -d ' ' -f 1 >> /etc/gserver_http.pid"))
-        
+        Execute(format("cd {gstore_dir}/latest;nohup ./bin/ghttp lubm 9000 &"))
+        Execute("rm -rf /etc/gserver.pid;pidof ./bin/ghttp | cut -d ' ' -f 1 >> /etc/gserver.pid")
         
         service_packagedir = params.service_packagedir
         Execute('find '+params.service_packagedir+' -iname "*.sh" | xargs chmod +x')
@@ -43,7 +40,6 @@ class GStoreMaster(Script):
         import params
         env.set_params(params)
         self.configure(env)
-        Execute(format("cd {gstore_dir}/latest;./bin/gserver -t"))
         
         cmd = format("ps -ef|grep ghttp |grep -v grep|cut -c 9-15|xargs kill -9 ")
         Execute(cmd, ignore_failures=True)

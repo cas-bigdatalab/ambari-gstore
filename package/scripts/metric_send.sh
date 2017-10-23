@@ -5,7 +5,7 @@ appid='gstore'
 while [ 1 ]
 do
 rm -rf monitor
-curl http://$2:9000/monitor -o monitor
+curl http://$2:9000/?operation=monitor -o monitor
 content=`cat monitor`
 echo $content
 arr=(${content// / }) 
