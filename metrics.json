@@ -1,75 +1,36 @@
 {
-  "GSTORE_SERVER": {
+  "GSTOREMS": {
     "Component": [
       {
         "type": "ganglia",
         "metrics": {
           "default": {
-            "metrics/triple": {
+            "metrics/gstore/triple": {
               "metric": "triple",
               "pointInTime": true,
               "temporal": true
             },
-            "metrics/entity": {
+            "metrics/gstore/entity": {
               "metric": "entity",
               "pointInTime": true,
               "temporal": true
             },
-            "metrics/literal": {
+            "metrics/gstore/literal": {
               "metric": "literal",
               "pointInTime": true,
               "temporal": true
             },
-            "metrics/subject": {
+            "metrics/gstore/subject": {
               "metric": "subject",
               "pointInTime": true,
               "temporal": true
             },
-            "metrics/predicate": {
+            "metrics/gstore/predicate": {
               "metric": "predicate",
               "pointInTime": true,
               "temporal": true
             },
-            "metrics/connection": {
-              "metric": "connection",
-              "pointInTime": true,
-              "temporal": true
-            }
-          }
-        }
-      }
-    ],
-    "HostComponent": [
-      {
-        "type": "ganglia",
-        "metrics": {
-          "default": {
-            "metrics/triple": {
-              "metric": "triple",
-              "pointInTime": true,
-              "temporal": true
-            },
-            "metrics/entity": {
-              "metric": "entity",
-              "pointInTime": true,
-              "temporal": true
-            },
-            "metrics/literal": {
-              "metric": "literal",
-              "pointInTime": true,
-              "temporal": true
-            },
-            "metrics/subject": {
-              "metric": "subject",
-              "pointInTime": true,
-              "temporal": true
-            },
-            "metrics/predicate": {
-              "metric": "predicate",
-              "pointInTime": true,
-              "temporal": true
-            },
-            "metrics/connection": {
+            "metrics/gstore/connection": {
               "metric": "connection",
               "pointInTime": true,
               "temporal": true

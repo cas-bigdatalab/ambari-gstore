@@ -13,8 +13,8 @@ class GStoreMaster(Script):
               cd_access='a',
               create_parents=True
         )
-        Execute('cd ' + params.gstore_dir + '; wget ' + params.downloadlocation + ' -O gstore.tar.gz  ')
-        Execute('cd ' + params.gstore_dir + '; tar -xvf gstore.tar.gz')
+        Execute('cd ' + params.gstore_dir + '; wget http://repo.sdc/hdp/gstore/gStore.tar.gz  -O gstore.tar.gz  ')
+        Execute('cd ' + params.gstore_dir + '; tar -xvf gstore.tar.gz;rm -rf gstore.tar.gz')
         Execute('cd ' + params.gstore_dir + ';rm -rf latest; ln -s gStore* latest')          
 
     def configure(self, env):  
@@ -27,32 +27,24 @@ class GStoreMaster(Script):
         import params
         env.set_params(params)
         self.configure(env)
-        Execute(format("cd {gstore_dir}/latest;nohup ./bin/ghttp lubm 9000 &"))
-        Execute("rm -rf /etc/gserver.pid;pidof ./bin/ghttp | cut -d ' ' -f 1 >> /etc/gserver.pid")
-        
         service_packagedir = params.service_packagedir
         Execute('find '+params.service_packagedir+' -iname "*.sh" | xargs chmod +x')
-        cmd = format("nohup {service_packagedir}/scripts/metric_send.sh {collector_host} {current_host_name} &")
-        Execute('echo "Running ' + cmd + '" as root')
-        Execute(cmd, ignore_failures=True)
+        Execute(format("echo \"cd {gstore_dir}/latest && nohup ./bin/ghttp lubm {node_port}  2>&1 >/dev/null &\"|at now +1 min"))
+        sleep(65);Execute("rm -rf /tmp/gserver.pid;pidof ./bin/ghttp | cut -d \" \" -f 1 > /tmp/gserver.pid")
 
     def stop(self, env):
         import params
         env.set_params(params)
         self.configure(env)
-        
         cmd = format("ps -ef|grep ghttp |grep -v grep|cut -c 9-15|xargs kill -9 ")
         Execute(cmd, ignore_failures=True)
-        cmd = format("ps -ef|grep metric_send.sh |grep -v grep|cut -c 9-15|xargs kill -9 ")
-        Execute(cmd, ignore_failures=True)
-
 
     def restart(self, env):
         self.stop(env)
         self.start(env)
 
     def status(self, env):
-        check_process_status("/etc/gserver.pid")
+        check_process_status("/tmp/gserver.pid")
 
 
 if __name__ == "__main__":

@@ -2,125 +2,134 @@
   "layouts": [
     {
       "layout_name": "default_gstore_dashboard",
-      "display_name": "Standard gStore Dashboard",
+      "display_name": "Standard GStore Dashboard",
       "section_name": "GSTORE_SUMMARY",
       "widgetLayoutInfo": [
         {
-          "widget_name": "Triple NUM",
-          "description": "Triple NUM",
+          "widget_name": "Triples",
+          "description": "Number of Triples",
           "widget_type": "NUMBER",
           "is_visible": true,
           "metrics": [
             {
               "name": "triple",
-              "metric_path": "metrics/triple",
+              "metric_path": "metrics/gstore/triple",
               "service_name": "GSTORE",
-              "component_name": "GSTORE_SERVER"
+              "component_name": "GSTOREMS"
             }
           ],
           "values": [
             {
-              "name": "triple",
-              "value": "${triple}"
+              "name": "Number of Triples",
+              "value": "${triple/1000000.0}"
             }
-          ]
+          ],
+          "properties": {
+             "display_unit": "M"
+          }
         },
 		 {
-          "widget_name": "Entity NUM",
-          "description": "Entity NUM",
+          "widget_name": "Entities",
+          "description": "Number of Entities",
           "widget_type": "NUMBER",
           "is_visible": true,
           "metrics": [
             {
               "name": "entity",
-              "metric_path": "metrics/entity",
+              "metric_path": "metrics/gstore/entity",
               "service_name": "GSTORE",
-              "component_name": "GSTORE_SERVER"
+              "component_name": "GSTOREMS"
             }
           ],
           "values": [
             {
-              "name": "entity",
-              "value": "${entity}"
+              "name": "Number of Entities",
+              "value": "${entity/1000000.0}"
             }
-          ]
+          ],
+          "properties": {
+             "display_unit": "M"
+          }
         },
 		 {
-          "widget_name": "Literal NUM",
-          "description": "Literal NUM",
+          "widget_name": "The Literals",
+          "description": "Number of the Literals",
           "widget_type": "NUMBER",
           "is_visible": true,
           "metrics": [
             {
               "name": "literal",
-              "metric_path": "metrics/literal",
+              "metric_path": "metrics/gstore/literal",
               "service_name": "GSTORE",
-              "component_name": "GSTORE_SERVER"
+              "component_name": "GSTOREMS"
             }
           ],
           "values": [
             {
-              "name": "literal",
+              "name": "Number of the Literals",
               "value": "${literal}"
             }
           ]
         },
 		 {
-          "widget_name": "Subject NUM",
-          "description": "Subject NUM",
+          "widget_name": "Subjects",
+          "description": "Number of Subjects",
           "widget_type": "NUMBER",
           "is_visible": true,
           "metrics": [
             {
               "name": "subject",
-              "metric_path": "metrics/subject",
+              "metric_path": "metrics/gstore/subject",
               "service_name": "GSTORE",
-              "component_name": "GSTORE_SERVER"
+              "component_name": "GSTOREMS"
             }
           ],
           "values": [
             {
-              "name": "subject",
-              "value": "${subject}"
+              "name": "Number of Subjects",
+              "value": "${subject/1000000.0}"
             }
-          ]
+          ],
+          "properties": {
+             "display_unit": "M"
+          }
         },
 		 {
-          "widget_name": "Predicate NUM",
-          "description": "Predicate NUM",
+          "widget_name": "Predicates",
+          "description": "Number of Predicates",
           "widget_type": "NUMBER",
           "is_visible": true,
           "metrics": [
             {
               "name": "predicate",
-              "metric_path": "metrics/predicate",
+              "metric_path": "metrics/gstore/predicate",
               "service_name": "GSTORE",
-              "component_name": "GSTORE_SERVER"
+              "component_name": "GSTOREMS"
             }
           ],
           "values": [
             {
-              "name": "predicate",
+              "name": "Number of Predicates",
               "value": "${predicate}"
             }
           ]
         },
 		 {
-          "widget_name": "Connection NUM",
-          "description": "Connection NUM",
+          "widget_name": "Connections",
+          "description": "Number of Connections",
           "widget_type": "NUMBER",
           "is_visible": true,
           "metrics": [
             {
               "name": "connection",
-              "metric_path": "metrics/connection",
+              "metric_path": "metrics/gstore/connection",
               "service_name": "GSTORE",
-              "component_name": "GSTORE_SERVER"
+              "component_name": "GSTOREMS"
             }
           ],
           "values": [
             {
-              "name": "connection",
+              "name": "Number of Connections",
               "value": "${connection}"
             }
           ]
