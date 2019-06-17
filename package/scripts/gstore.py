@@ -13,7 +13,7 @@ class GStoreMaster(Script):
               cd_access='a',
               create_parents=True
         )
-        Execute('cd ' + params.gstore_dir + '; wget http://repo.sdc/hdp/gstore/gStore.tar.gz  -O gstore.tar.gz  ')
+        Execute('cd ' + params.gstore_dir + '; wget '+params.gstore_url+' -O gstore.tar.gz  ')
         Execute('cd ' + params.gstore_dir + '; tar -xvf gstore.tar.gz;rm -rf gstore.tar.gz')
         Execute('cd ' + params.gstore_dir + ';rm -rf latest; ln -s gStore* latest')          
 
@@ -29,14 +29,14 @@ class GStoreMaster(Script):
         self.configure(env)
         service_packagedir = params.service_packagedir
         Execute('find '+params.service_packagedir+' -iname "*.sh" | xargs chmod +x')
-        Execute(format("echo \"cd {gstore_dir}/latest && nohup ./bin/ghttp lubm {node_port}  2>&1 >/dev/null &\"|at now +1 min"))
+        Execute(format("echo \"cd {gstore_dir}/latest && nohup ./bin/ghttp lubm {node_port}  2>&1 >/dev/null &\"|at now"))
         sleep(65);Execute("rm -rf /tmp/gserver.pid;pidof ./bin/ghttp | cut -d \" \" -f 1 > /tmp/gserver.pid")
 
     def stop(self, env):
         import params
         env.set_params(params)
         self.configure(env)
-        cmd = format("ps -ef|grep ghttp |grep -v grep|cut -c 9-15|xargs kill -9 ")
+        cmd = format("killall ghttp")
         Execute(cmd, ignore_failures=True)
 
     def restart(self, env):

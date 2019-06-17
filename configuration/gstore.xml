@@ -2,7 +2,45 @@
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 
 <configuration supports_adding_forbidden="true">
-   
+  <property>
+    <name>gstore_url</name>
+    <value>http://repo/hdp/gstore/gStore.tar.gz</value>
+    <description>gStore download url.</description>
+  </property>
+  <property>
+    <name>gstorems_url</name>
+    <value>http://repo/hdp/gstore/gstorems.tar.gz</value>
+    <description>gStore management system download url.</description>
+  </property>
+  <property>
+    <name>username</name>
+    <display-name>Username</display-name>
+    <value>root</value>
+    <description>gstore master user name.</description>
+  </property>
+  <property>
+    <name>password</name>
+    <value>123456</value>
+    <display-name>Password</display-name>
+    <description>
+      gstore master password.
+    </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
+    <name>node_port</name>
+    <value>9100</value>
+    <description>gstore master listening port.</description>
+  </property>
+  <property>
+    <name>home_path</name>
+    <display-name>Home Path</display-name>
+    <value>/data/gstore</value>
+    <description>Path where the gstore app and data is stored.</description>
+    <value-attributes>
+      <type>directory</type>
+    </value-attributes> 
+  </property>
   <property>
     <name>content</name>
     <description>This is the jinja template for init.conf file</description>
@@ -53,40 +91,6 @@ buffer_maxium = 100
 
 # Time of scheduled backup of gserver (HHMM, UTC)
 BackupTime = 2000	# 4 am (GMT+8)
-    </value>
-  </property>
- <property>
-    <name>ms.content</name>
-    <description>gstorems-latest/webapps/gStorems/Config/gStoreInit.properties</description>
-    <value>
-#node list info
-nodecount=3
-#NODE1 INFO
-ip1=emr17fb191d
-port1=9100
-username1=root
-password1=123456
-systemusername1=root
-systempassword1=bigdata
-rootpath1=/data/gstore/latest
-
-#NODE2 INFO
-ip2=emrbf554c6f
-port2=9101
-username2=root
-password2=123456
-systemusername2=root
-systempassword2=bigdata
-rootpath2=/data/gstore/latest
-
-#NODE3 INFO
-ip3=emre69bf7ed
-port3=9102
-username3=root
-password3=123456
-systemusername3=root
-systempassword3=bigdata
-rootpath3=/data/gstore/latest
     </value>
   </property>
 
