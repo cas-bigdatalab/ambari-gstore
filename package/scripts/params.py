@@ -7,7 +7,7 @@ service_packagedir = os.path.realpath(__file__).split('/scripts')[0]
 current_host_name = socket.gethostname()
 # server configurations
 config = Script.get_config()
-master_hosts = config['clusterHostInfo']['gstore_master_hosts']
+slave_hosts = config['clusterHostInfo']['gstore_slave_hosts']
 gstore_url=config['configurations']['gstore']['gstore_url']
 gstorems_url=config['configurations']['gstore']['gstorems_url']
 username=config['configurations']['gstore']['username']
