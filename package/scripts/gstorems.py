@@ -18,7 +18,6 @@ class GStorems(Script):
     def configure(self, env):
         import params
         env.set_params(params)
-        conf_content="nodecount={}".format(params.node_count)
         conf_content+='{"nodeList":['
         for h in params.slave_hosts:
             conf_content+='{"nodeIp": "'+h+'","username": "'+params.username+'","password": "'+params.password+'","port": '+params.node_port+',"systemusername": "root","systempassword": "bigdata","rootpath": "'+params.gstore_dir+'/latest"}' 
