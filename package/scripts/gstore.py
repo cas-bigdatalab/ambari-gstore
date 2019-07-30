@@ -13,7 +13,7 @@ class GStoreSlave(Script):
               cd_access='a',
               create_parents=True
         )
-        Execute('cd ' + params.gstore_dir + '; rm -rf latest; wget '+params.gstore_url+' -O gStore.zip; unzip gStore.zip; ln -sf gStore* latest')
+        Execute('cd ' + params.gstore_dir + '; rm -rf latest; wget '+params.gstore_url+' -O gStore.zip; unzip gStore.zip; rm -rf gStore.zip; ln -sf gStore* latest')
         Execute('cd ' + params.gstore_dir + '/latest; ./bin/ginit; ./bin/gbuild lubm data/lubm/lubm.nt')
 
     def configure(self, env):  
