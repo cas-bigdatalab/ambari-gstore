@@ -4,15 +4,15 @@
   <services>
     <service>
       <name>GSTORE</name>
-      <displayName>GStore</displayName>
-      <comment>a graph based RDF triple store.</comment>
+      <displayName>PiSys-GStore</displayName>
+      <comment>a graph based RDF triple store. PiSys's graph storage engine</comment>
       <version>2.0</version>
       <components>
         <component>
-          <name>GSTORE_MASTER</name>
-          <displayName>GStore Master</displayName>
-          <category>MASTER</category>
-		      <cardinality>3+</cardinality>
+          <name>GSTORE_SLAVE</name>
+          <displayName>GStore Slave</displayName>
+          <category>SLAVE</category>
+		      <cardinality>1+</cardinality>
           <commandScript>
             <script>scripts/gstore.py</script>
             <scriptType>PYTHON</scriptType>
@@ -32,7 +32,6 @@
           </commandScript>
         </component>
       </components>
-
       <osSpecifics>
         <osSpecific>
           <osFamily>redhat5,redhat6,redhat7</osFamily>

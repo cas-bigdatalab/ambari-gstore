@@ -8,7 +8,6 @@ current_host_name = socket.gethostname()
 # server configurations
 config = Script.get_config()
 master_hosts = config['clusterHostInfo']['gstore_master_hosts']
-node_count=len(master_hosts)
 gstore_url=config['configurations']['gstore']['gstore_url']
 gstorems_url=config['configurations']['gstore']['gstorems_url']
 username=config['configurations']['gstore']['username']

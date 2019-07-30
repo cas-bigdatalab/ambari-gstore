@@ -3,7 +3,7 @@ import base64
 from time import sleep
 from resource_management import *
 
-class GStoreMaster(Script):
+class GStoreSlave(Script):
     
     def install(self, env):      
         import params
@@ -13,9 +13,8 @@ class GStoreMaster(Script):
               cd_access='a',
               create_parents=True
         )
-        Execute('cd ' + params.gstore_dir + '; wget '+params.gstore_url+' -O gstore.tar.gz  ')
-        Execute('cd ' + params.gstore_dir + '; tar -xvf gstore.tar.gz;rm -rf gstore.tar.gz')
-        Execute('cd ' + params.gstore_dir + ';rm -rf latest; ln -s gStore* latest')          
+        Execute('cd ' + params.gstore_dir + '; rm -rf latest; wget '+params.gstore_url+' -O gStore.zip; unzip gStore.zip; ln -sf gStore* latest')
+        Execute('cd ' + params.gstore_dir + '/latest; ./bin/ginit; ./bin/gbuild lubm data/lubm/lubm.nt')
 
     def configure(self, env):  
         import params
@@ -29,8 +28,9 @@ class GStoreMaster(Script):
         self.configure(env)
         service_packagedir = params.service_packagedir
         Execute('find '+params.service_packagedir+' -iname "*.sh" | xargs chmod +x')
-        Execute(format("echo \"cd {gstore_dir}/latest && nohup ./bin/ghttp lubm {node_port}  2>&1 >/dev/null &\"|at now"))
-        sleep(65);Execute("rm -rf /tmp/gserver.pid;pidof ./bin/ghttp | cut -d \" \" -f 1 > /tmp/gserver.pid")
+        Execute(format("echo \"cd /data/gStore/latest && nohup ./bin/ghttp lubm {node_port}  2>&1 >/dev/null &\"|at now"))
+        sleep(30)
+        Execute("rm -rf /tmp/gstore-slave.pid;pidof ./bin/ghttp | cut -d \" \" -f 1 > /tmp/gstore-slave.pid")
 
     def stop(self, env):
         import params
@@ -44,8 +44,8 @@ class GStoreMaster(Script):
         self.start(env)
 
     def status(self, env):
-        check_process_status("/tmp/gserver.pid")
+        check_process_status("/tmp/gstore-slave.pid")
 
 
 if __name__ == "__main__":
-    GStoreMaster().execute()
+    GStoreSlave().execute()

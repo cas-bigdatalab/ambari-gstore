@@ -4,33 +4,33 @@
 <configuration supports_adding_forbidden="true">
   <property>
     <name>gstore_url</name>
-    <value>http://repo/hdp/gstore/gStore.tar.gz</value>
-    <description>gStore download url.</description>
+    <value>http://repo/hdp/gstore/gstore.zip</value>
+    <description>gStore slave download url.</description>
   </property>
   <property>
     <name>gstorems_url</name>
-    <value>http://repo/hdp/gstore/gstorems.tar.gz</value>
+    <value>http://repo/hdp/gstore/gstorems.zip</value>
     <description>gStore management system download url.</description>
   </property>
   <property>
     <name>username</name>
     <display-name>Username</display-name>
     <value>root</value>
-    <description>gstore master user name.</description>
+    <description>gstore slave user name.</description>
   </property>
   <property>
     <name>password</name>
     <value>123456</value>
     <display-name>Password</display-name>
     <description>
-      gstore master password.
+      gstore slave password.
     </description>
     <on-ambari-upgrade add="true"/>
   </property>
   <property>
     <name>node_port</name>
     <value>9100</value>
-    <description>gstore master listening port.</description>
+    <description>gstore slave listening port.</description>
   </property>
   <property>
     <name>home_path</name>
@@ -48,6 +48,8 @@
 # NOTICE: this file configures the gStore system, please remember to edit it before using gStore
 # NOTICE: each line should not exceed 500
 # NOTICE: the settings are for all databases in this gStore application
+#
+# TODO: include configs in Util/Util.h like USED_AS_ENDPOINT
 
 [setting]
 
@@ -64,12 +66,14 @@ debug_level = simple
 
 # TODO: add native/server modes, if in server mode, not output results
 # TODO: control if using vstree, if encode str/pre
+# TODO: choose if keep id2string trees when querying(not for sparql-endpoint)
 
 [option]
 
-# This option means which directory do you want to place your database in(the directory will be created if not exists)
+# This option means which directory do you want to place your database in
 # NOTICE:the position is the root of gStore system directory by default
 # db_home = .
+ #db_home = /home/ssd
 # user_home = .
 
 # which suffix do you want to add to your database name? please set it here
