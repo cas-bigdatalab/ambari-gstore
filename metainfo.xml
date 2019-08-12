@@ -37,7 +37,7 @@
           <osFamily>redhat5,redhat6,redhat7</osFamily>
           <packages>
 			      <package>
-              <name>boost</name>
+              <name>boost169</name>
             </package>
           </packages>
         </osSpecific>
