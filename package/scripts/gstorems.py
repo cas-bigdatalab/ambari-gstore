@@ -20,7 +20,7 @@ class GStorems(Script):
         env.set_params(params)
         conf_content='{"nodeList":['
         for h in params.slave_hosts:
-            conf_content+='{"nodeIp": "'+h+'","username": "'+params.username+'","password": "'+params.password+'","port": '+params.node_port+',"systemusername": "root","systempassword": "bigdata","rootpath": "'+params.gstore_dir+'/latest"}' 
+            conf_content+='{"nodeIp": "'+h+'","username": "'+params.username+'","password": "'+params.password+'","port": '+params.node_port+',"systemusername": "root","systempassword": "'+params.password+'","rootpath": "'+params.gstore_dir+'/latest"}' 
         conf_content+=']}'
         File(format("{gstore_dir}/gstorems-latest/webapps/gstoremaster/Config/gStoreNodeConfig.json"), content=conf_content)
 
