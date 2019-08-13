@@ -13,7 +13,7 @@ class GStoreSlave(Script):
               cd_access='a',
               create_parents=True
         )
-        Execute('cd ' + params.gstore_dir + '; rm -rf latest; wget '+params.gstore_url+' -O gStore.zip; unzip gStore.zip; rm -rf gStore.zip; ln -sf gStore* latest')
+        Execute('cd ' + params.gstore_dir + '; rm -rf latest; wget '+params.gstore_url+' -O gstore.zip; unzip gstore.zip; rm -rf gstore.zip; ln -sf gstore* latest')
         Execute('cd ' + params.gstore_dir + '/latest; ./bin/ginit; ./bin/gbuild lubm data/lubm/lubm.nt')
 
     def configure(self, env):  
@@ -28,7 +28,7 @@ class GStoreSlave(Script):
         self.configure(env)
         service_packagedir = params.service_packagedir
         Execute('find '+params.service_packagedir+' -iname "*.sh" | xargs chmod +x')
-        Execute(format("echo \"cd /data/gStore/latest && nohup ./bin/ghttp lubm {node_port}  2>&1 >/dev/null &\"|at now"))
+        Execute(format("echo \"cd /data/gstore/latest && nohup ./bin/ghttp lubm {node_port}  2>&1 >/dev/null &\"|at now"))
         sleep(30)
         Execute("rm -rf /tmp/gstore-slave.pid;pidof ./bin/ghttp | cut -d \" \" -f 1 > /tmp/gstore-slave.pid")
 

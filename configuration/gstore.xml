@@ -28,6 +28,15 @@
     <on-ambari-upgrade add="true"/>
   </property>
   <property>
+    <name>systempassword</name>
+    <value>admin</value>
+    <display-name>System user root's password</display-name>
+    <description>
+      gstore slave password.
+    </description>
+    <on-ambari-upgrade add="true"/>
+  </property>
+  <property>
     <name>node_port</name>
     <value>9100</value>
     <description>gstore slave listening port.</description>
